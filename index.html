@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacific Crown City</title>
+  <style>
+    :root {
+      --bg-dark: #160a28;
+      --bg-card: #24113f;
+      --purple-main: #7a3cff;
+      --purple-light: #c2a6ff;
+      --text-main: #f4efff;
+      --text-muted: #d2c6ff;
+      --green-btn: #28a745;
+    }
+
+    * { box-sizing: border-box; font-family: "Tajawal", Arial, sans-serif; margin:0; padding:0; }
+
+    body {
+      margin: 0;
+      color: var(--text-main);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* الخلفية الفيديو تغطي الصفحة كاملة */
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .background-video video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      filter: brightness(0.5);
+    }
+
+    .overlay {
+      position: fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 0;
+    }
+
+    nav {
+      background: rgba(18,8,31,0.9);
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    nav a {
+      color: var(--text-main);
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--purple-main); }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title { text-align: center; margin-bottom: 45px; }
+    .section-title h2 { font-size: 34px; color: var(--purple-light); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(122,60,255,0.35);
+    }
+    .card h3 { margin-top:0; color: var(--purple-main); }
+    .card p { color: var(--text-muted); line-height: 1.8; }
+
+    .creators {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .creator {
+      background: linear-gradient(145deg, #2c1755, #1a0c33);
+      padding: 30px;
+      border-radius: 18px;
+      text-align: center;
+      border: 1px solid rgba(122,60,255,0.3);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .creator:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+    .creator h3 { color: var(--purple-light); margin-bottom:10px; }
+    .creator p { color: var(--text-muted); line-height:1.7; }
+    .creator a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 26px;
+      background: var(--green-btn);
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .creator a:hover { background: #218838; transform: scale(1.08); }
+
+    .rules {
+      background: var(--bg-card);
+      border-radius: 18px;
+      padding: 40px;
+      line-height: 2;
+      color: var(--text-muted);
+      margin-bottom: 50px;
+    }
+    .rules ul { padding-right: 20px; }
+    .rules li { margin-bottom: 10px; }
+
+    .join { text-align: center; margin-top: 50px; }
+    .join a {
+      padding: 16px 40px;
+      font-size: 18px;
+      background: linear-gradient(135deg, #7a3cff, #9d6bff);
+      color: #fff;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 10px 30px rgba(122,60,255,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .join a:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(122,60,255,0.7);
+    }
+
+    footer {
+      margin-top: 70px;
+      background: #0d0418;
+      padding: 25px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      position: relative;
+      z-index: 2;
+    }
+    footer span { color: var(--purple-main); }
+  </style>
+</head>
+<body>
+
+<!-- خلفية الفيديو -->
+<div class="background-video">
+  <video autoplay muted loop>
+    <source src="vedio/background.mp4" type="video/mp4">
+    متصفحك لا يدعم الفيديو.
+  </video>
+  <div class="overlay"></div>
+</div>
+
+<nav>
+  <a href="#about">عن المدينة</a>
+  <a href="#features">مميزات السيرفر</a>
+  <a href="#creators">صناع المحتوى</a>
+</nav>
+
+<section id="about">
+  <div class="section-title"><h2>عن Crown City</h2></div>
+  <p style="text-align:center; max-width:800px; margin:auto; color: var(--text-muted); line-height:2;">
+    Crown City هو سيرفر احترافي مصمم ليقدم تجربة رول بلاي متكاملة، يعتمد على نظام منظم، إدارة قوية، وبيئة داعمة للإبداع وصناعة المحتوى والرسم.
+  </p>
+</section>
+
+<section id="features">
+  <div class="cards">
+    <div class="card">
+      <h3>🎮 نظام احترافي</h3>
+      <p>أنظمة متطورة، قوانين واضحة، وتجربة لعب متوازنة لجميع اللاعبين.</p>
+    </div>
+    <div class="card">
+      <h3>🛒 متجر السيرفر</h3>
+      <p>متجر احترافي يوفر جميع المستلزمات والموارد الخاصة باللاعبين وصناع المحتوى. <a href="https://cc.thta.shop/products" target="_blank" style="color: #7a3cff; text-decoration: underline;">زيارة المتجر</a></p>
+    </div>
+    <div class="card">
+      <h3>📹 صناع المحتوى</h3>
+      <p>بيئة مثالية للبث المباشر والتصوير وصناعة المحتوى الاحترافي.</p>
+    </div>
+  </div>
+</section>
+
+<section id="creators">
+  <div class="rules">
+    <div class="section-title"><h2>قوانين المدينة</h2></div>
+    <ul>
+      <li>الاحترام المتبادل بين جميع اللاعبين وصناع المحتوى.</li>
+      <li>يمنع الخروج عن الرول بلاي أو تخريبه بأي شكل.</li>
+      <li>الالتزام بأنظمة السيرفر وقرارات الإدارة.</li>
+      <li>يمنع استغلال البق أو الثغرات.</li>
+      <li>أي مخالفة تعرض صاحبها للعقوبات.</li>
+    </ul>
+
+
+
+
+  
+  </div>
+
+  <div class="section-title">
+    <h2>صناع المحتوى على Kick</h2>
+  </div>
+  <div class="creators">
+    <div class="creator">
+      <h3>F5</h3>
+      <p>بثوث رول بلاي وفعاليات مباشرة</p>
+      <a href="https://kick.com/yazan2222" target="_blank">Kick</a>
+    </div>
+    <div class="creator">
+      <h3>Abu saad</h3>
+      <p>بثوث رول بلاي وفعاليات مباشرة</p>
+      <a href="https://kick.com/rj8f" target="_blank">Kick</a>
+    </div>
+    <div class="creator">
+      <h3>x-58c</h3>
+      <p>بثوث رول بلاي وفعاليات مباشرة</p>
+      <a href="https://kick.com/wee54" target="_blank">Kick</a>
+    </div>
+    <div class="creator">
+      <h3>blood</h3>
+      <p>بثوث رول بلاي وفعاليات مباشرة</p>
+      <a href="https://kick.com/blood-8" target="_blank">Kick</a>
+    </div>
+    <div class="creator">
+      <h3>TuRkI</h3>
+      <p>بثوث رول بلاي وفعاليات مباشرة</p>
+      <a href="https://kick.com/idg7" target="_blank">Kick</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="join">
+  <a href="https://discord.gg/D8cz8bfQ" target="_blank">الدخول إلى سيرفر Crown City</a>
+</section>
+
+<footer>
+  © 2026 <span>Crown City</span> — جميع الحقوق محفوظة
+</footer>
+
+</body>
+</html>
