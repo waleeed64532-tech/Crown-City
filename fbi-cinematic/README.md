@@ -1,11 +1,15 @@
-# مشهد FBI لـ QBCore
+# مشهد FBI لـ QBCore — الإصدار 1.1.0
 
-[تحميل الريسورس ZIP مباشرة](https://github.com/waleeed64532-tech/Crown-City/raw/refs/heads/fbi-cinematic-download/fbi-cinematic/FBI-Raid-QBCore.zip)
+[تحميل النسخة المصححة ZIP مباشرة](https://github.com/waleeed64532-tech/Crown-City/raw/refs/heads/fbi-cinematic-download/fbi-cinematic/FBI-Raid-QBCore-v1.1.zip)
 
-[شرح التركيب بالعربي](INSTALL_AR.md)
+[شرح التركيب والتحديث](INSTALL_AR.md) · [تفاصيل التصحيح](CHANGELOG_AR.md)
 
-فك الضغط، وانقل `qb-fbi-cinematic` إلى `resources/[local]`، ثم أضف `ensure qb-fbi-cinematic` بعد `qb-core` مع تفعيل OneSync. اكتب `/fbiraid` بصلاحية admin وأنت خارج المباني وعلى قدميك. التصوير والأحداث تلقائية؛ ESC يوقف المشهد.
+صححت هذه النسخة رفض الساحة عند بدء العرض: الموقع على الساحة الجنوبية المفتوحة في الميناء، والفحص يعتمد على ارتفاع الرصيف والعوائق الفعلية والسقف والماء، مع بحث محدود في مواقع قريبة. تم تعديل المسار الجنوبي ومحاولة الهرب ومهمة وصول المركبات.
 
-الحزمة تحتوي البوتات والكاميرات و4 ملفات موسيقى. المروحية الهجومية الافتراضية hunter؛ الأباتشي المخصصة تحتاج مودًا مثبتًا. لم تختبر الحركة داخل FiveM؛ راجع الشرح لتجربة المسارات على خريطتك.
+استبدل مجلد `qb-fbi-cinematic` بالكامل بما فيه `config.lua` وملفات `client` ثم نفذ `restart qb-fbi-cinematic` في كونسول السيرفر. اكتب `/fbiraid` بصلاحية admin وأنت حي وعلى قدميك خارج المباني. عند اختيار الموقع تظهر رسالة `v1.1 Outdoor apron selected` في F8.
 
-SHA-256 للحزمة: `5e3b2efa2abbc4c84b1a7fa115356973c461f9bfd9670160cff87e1d5ddef04e`
+يتطلب qb-core وOneSync. الكاميرات والأحداث تلقائية؛ ESC يوقف العرض ويرجعك. المروحية العسكرية الافتراضية hunter، والأباتشي المخصصة تحتاج مودًا مثبتًا.
+
+نجحت 20 مجموعة فحص بالمحاكاة وفحوص صياغة Lua وJavaScript وأسماء الدوال وسلامة ZIP. لم تشغل النسخة داخل GTA V/FiveM في بيئة التجهيز؛ تجربة خريطتك ومسارات AI داخل السيرفر لازمة.
+
+SHA-256 لحزمة الإصدار 1.1.0: `bf37891b44ac1f38de14689f66c2bd9fe32d97a6f594b3087d67d86896d45ceb`
